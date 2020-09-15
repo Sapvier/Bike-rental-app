@@ -1,8 +1,22 @@
 const express = require('express')
 const mongoose = require('mongoose')
+import * as db from './DataBaseUtils';
 
 const app = express()
-//app.use('/api/auth', require('./routes/auth.routes'))
+
+app.get('/', (req, res) => {
+    db.listBikes().then(data => res.send(data));
+});
+
+app.post('/', (req, res) => {
+    db.createBike(req.body).then(data => res.send(data));
+});
+
+app.delete('/', (req, res) => {
+    db.deleteBike(req.id).then(data => res.send(data));
+});
+
+require('./app/routes/note.routes.js')(app)
 
 async function start() {
     try {
@@ -19,5 +33,8 @@ async function start() {
     }
 }
 start()
+
+
+
 
 

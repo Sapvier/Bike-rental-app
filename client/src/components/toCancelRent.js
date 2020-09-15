@@ -6,16 +6,18 @@ const ToCancelRent = ({bike}) => {
         const data = {...bike, rented: true}
         console.log(data)
         try {
-            const res = await axios.delete(`https://react-site-b88f0.firebaseio.com/rentedBikes/${data.id}.json`)
+            const res = await axios.delete(`http://localhost:5000/`)
             console.log(res.data)
+            window.location.reload(false);
         } catch (e) {
             throw new Error(e.message)
         }
+        //`https://react-site-b88f0.firebaseio.com/rentedBikes/${data.id}.json`
     }
 
     return (
         <button className="btn red waves-effect waves-light col s1" type="button" name="action" onClick={clickHandler}>
-            Delete
+            Cancel rent
         </button>
     )
 }

@@ -21,8 +21,9 @@ const AvailableBikesList = () => {
     useEffect(() => {
         async function fetchData() {
             const result = await axios.get(
-                'https://react-site-b88f0.firebaseio.com/bikes.json',
+                'http://localhost:5000/',
             );
+            //'https://react-site-b88f0.firebaseio.com/bikes.json'
             if (result.data) {
                 const payload = Object.keys(result.data).map(key => {
                     return {

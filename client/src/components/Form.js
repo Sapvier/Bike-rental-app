@@ -18,11 +18,13 @@ const Form = () => {
         e.preventDefault()
         const data = {...form}
         try {
-            const res = await axios.post('https://react-site-b88f0.firebaseio.com/bikes.json', data)
+            const res = await axios.post('http://localhost:5000/', data)
             console.log(res.data)
+            window.location.reload(false);
         } catch (e) {
             throw new Error(e.message)
         }
+        //'https://react-site-b88f0.firebaseio.com/bikes.json'
     }
 
 

@@ -6,11 +6,12 @@ const ToDelete = ({bike}) => {
         const data = {...bike, rented: true}
         console.log(data)
         try {
-            const res = await axios.delete(`https://react-site-b88f0.firebaseio.com/bikes/${data.id}.json`)
+            const res = await axios.delete(`http://localhost:5000/`)
             console.log(res.data)
         } catch (e) {
             throw new Error(e.message)
         }
+        //'https://react-site-b88f0.firebaseio.com/bikes/${data.id}.json`
     }
 
     return (

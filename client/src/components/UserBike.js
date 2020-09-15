@@ -3,14 +3,15 @@ import ToCancelRent from "./toCancelRent";
 
 const styles = {
     data: {
-        margin: "auto"
+        margin: "auto",
+        marginRight: "1.5rem"
     },
     box: {
         border: "1px solid lightgrey",
         padding: "1rem",
         borderRadius: "10px",
         display: "flex",
-        justifyContent: "space-between"
+        justifyContent: "space-around"
     }
 }
 

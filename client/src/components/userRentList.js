@@ -21,8 +21,9 @@ const UserRentList = () => {
     useEffect(() => {
         async function fetchData() {
             const result = await axios.get(
-                'https://react-site-b88f0.firebaseio.com/rentedBikes.json',
+                'http://localhost:5000/',
             );
+            //'https://react-site-b88f0.firebaseio.com/rentedBikes.json'
             if (result.data) {
                 const payload = Object.keys(result.data).map(key => {
                     return {
