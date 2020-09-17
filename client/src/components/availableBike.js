@@ -5,7 +5,6 @@ import ToRent from "./toRent";
 const styles = {
     data: {
         margin: "auto"
-
     },
     box: {
         border: "1px solid lightgrey",
