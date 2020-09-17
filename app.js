@@ -1,22 +1,10 @@
 const express = require('express')
 const mongoose = require('mongoose')
-import * as db from './DataBaseUtils';
+const cors = require('cors')
 
 const app = express()
-
-app.get('/', (req, res) => {
-    db.listBikes().then(data => res.send(data));
-});
-
-app.post('/', (req, res) => {
-    db.createBike(req.body).then(data => res.send(data));
-});
-
-app.delete('/', (req, res) => {
-    db.deleteBike(req.id).then(data => res.send(data));
-});
-
-require('./app/routes/note.routes.js')(app)
+require('./routes/bike.routes.js')(app)
+app.use(cors())
 
 async function start() {
     try {
@@ -29,10 +17,12 @@ async function start() {
     }
     catch (e){
         console.log('Server error', e.message)
-        process.exit(1)
+        process.exit()
     }
 }
 start()
+
+
 
 
 

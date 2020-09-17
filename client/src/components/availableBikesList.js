@@ -23,7 +23,6 @@ const AvailableBikesList = () => {
             const result = await axios.get(
                 'http://localhost:5000/',
             );
-            //'https://react-site-b88f0.firebaseio.com/bikes.json'
             if (result.data) {
                 const payload = Object.keys(result.data).map(key => {
                     return {

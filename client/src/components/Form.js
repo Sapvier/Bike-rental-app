@@ -5,8 +5,7 @@ const Form = () => {
     const [form, setForm] = useState({
         name: '',
         type: '',
-        price: '',
-        rented: false
+        price: ''
         })
 
     const changeHandler = event => {
@@ -24,7 +23,6 @@ const Form = () => {
         } catch (e) {
             throw new Error(e.message)
         }
-        //'https://react-site-b88f0.firebaseio.com/bikes.json'
     }
 
 

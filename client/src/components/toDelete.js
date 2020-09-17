@@ -3,15 +3,14 @@ import axios from "axios";
 
 const ToDelete = ({bike}) => {
     const clickHandler = async () => {
-        const data = {...bike, rented: true}
+        const data = {...bike}
         console.log(data)
         try {
-            const res = await axios.delete(`http://localhost:5000/`)
+            const res = await axios.delete(`http://localhost:5000/`, {params: {id: data.id}})
             console.log(res.data)
         } catch (e) {
             throw new Error(e.message)
         }
-        //'https://react-site-b88f0.firebaseio.com/bikes/${data.id}.json`
     }
 
     return (

@@ -1,9 +1,16 @@
+const bodyParser = require('body-parser')
+const cors = require('cors')
+
+const jsonParser = bodyParser.json()
+
 module.exports = (app) => {
     const bikes = require('../controllers/bike.controller.js');
 
-    app.post('/', bikes.create);
+    app.post('/', jsonParser, cors(), bikes.create);
 
-    app.get('/', bikes.findAll);
+    app.get('/', jsonParser, cors(), bikes.findAll);
 
-    app.delete('/', bikes.delete);
+    //app.update('/', jsonParser, bikes.update)
+
+    app.delete('/', jsonParser, cors(), bikes.delete);
 }
