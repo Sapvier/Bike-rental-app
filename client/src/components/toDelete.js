@@ -6,8 +6,9 @@ const ToDelete = ({bike}) => {
         const data = {...bike}
         console.log(data)
         try {
-            const res = await axios.delete(`http://localhost:5000/`, {params: {id: data.id}})
+            const res = await axios.delete(`http://localhost:5000/${data._id}`)
             console.log(res.data)
+            window.location.reload(false);
         } catch (e) {
             throw new Error(e.message)
         }

@@ -2,11 +2,10 @@ import React from "react";
 import axios from "axios";
 
 const ToCancelRent = ({bike}) => {
-    const clickHandler = async () => {
+    const clickHandler = async (e) => {
         const data = {...bike}
-        console.log(data)
         try {
-            const res = await axios.delete(`http://localhost:5000/`, {params: {id: data.id}})
+            const res = await axios.delete(`http://localhost:5000/rented/${data._id}`)
             console.log(res.data)
             window.location.reload(false);
         } catch (e) {

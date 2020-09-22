@@ -16,14 +16,14 @@ const styles = {
 }
 
 const UserRentList = () => {
+
     const [rented, setRented] = useState( []);
 
     useEffect(() => {
         async function fetchData() {
             const result = await axios.get(
-                'http://localhost:5000/',
+                `http://localhost:5000/rented`,
             );
-            //'https://react-site-b88f0.firebaseio.com/rentedBikes.json'
             if (result.data) {
                 const payload = Object.keys(result.data).map(key => {
                     return {
@@ -34,20 +34,18 @@ const UserRentList = () => {
                 setRented(payload);
             }
             else setRented([])
-
         }
         fetchData();
     }, []);
 
     const listItems = rented.map(bike =>
-        <UserBike bike={bike} />
+        <UserBike bike={bike} key={bike._id}/>
     );
+
     let totalPrice = 0;
     for(let i = 0; i < rented.length; i++) {
         totalPrice = +totalPrice + +rented[i].price
     }
-
-
 
     if (rented.length)
         return (
@@ -58,10 +56,14 @@ const UserRentList = () => {
                 </ul>
             </div>
         )
-    else return <div style={styles.box}>
-        <h5 style={styles.data}>You didn't rent any bikes &#128542;</h5>
-    </div>
-
+    else return (
+        <div>
+            <h5>Your Rent</h5>
+            <div style={styles.box}>
+                <p style={styles.data}>You didn't rent any bikes &#128542;</p>
+            </div>
+        </div>
+    )
 }
 
 export default UserRentList

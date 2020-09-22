@@ -5,23 +5,21 @@ import axios from "axios";
 const ToRent = ({bike}) => {
 
     const clickHandler = async () => {
-        const data = {...bike}
+        const data = {...bike, rented: true}
         console.log(data)
         try {
-            const res = await axios.post('http://localhost:5000/', data)
+            const res = await axios.post(`http://localhost:5000/${data._id}`, data)
             console.log(res.data)
         } catch (e) {
             throw new Error(e.message)
         }
-        //'https://react-site-b88f0.firebaseio.com/rentedBikes.json',
         try {
-            const res = await axios.delete(`http://localhost:5000/${data.id}.json`)
+            const res = await axios.delete(`http://localhost:5000/${data._id}`)
             console.log(res.data)
             window.location.reload(false);
         } catch (e) {
             throw new Error(e.message)
         }
-        //`https://react-site-b88f0.firebaseio.com/bikes/${data.id}.json`
     }
 
 

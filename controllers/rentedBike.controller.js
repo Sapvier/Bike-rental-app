@@ -1,12 +1,13 @@
-const Bike = require('../models/bike.model.js');
+const RentedBike = require('../models/rentedBike.model');
 
 exports.create = (req, res) => {
-    const bike = new Bike({
+    const rentedBike = new RentedBike({
         name: req.body.name,
         type: req.body.type,
-        price: req.body.price
+        price: req.body.price,
+        rented: req.body.rented
     });
-    bike.save()
+    rentedBike.save()
         .then(data => {
             res.send(data);
         }).catch(err => {
@@ -17,7 +18,7 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    Bike.find()
+    RentedBike.find()
         .then(bikes => {
             res.send(bikes);
         }).catch(err => {
@@ -27,8 +28,9 @@ exports.findAll = (req, res) => {
     });
 };
 
+
 exports.delete = (req, res) => {
-    Bike.findByIdAndRemove(req.params.id)
+    RentedBike.findByIdAndRemove(req.params.id)
         .then(bike => {
             if(!bike) {
                 return res.status(404).send({
@@ -37,5 +39,5 @@ exports.delete = (req, res) => {
             }
             console.log(req.params.id)
             res.send({message: "Bike has been deleted successfully!"});
-    });
+        });
 };

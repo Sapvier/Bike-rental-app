@@ -39,7 +39,7 @@ const AvailableBikesList = () => {
     }, []);
 
     const listItems = data.map(bike =>
-        <AvailableBike bike={bike} />
+        <AvailableBike bike={bike} key={bike._id}/>
     );
 
 
@@ -52,9 +52,14 @@ const AvailableBikesList = () => {
             </ul>
         </div>
     )
-    else return <div style={styles.box}>
-        <p style={styles.data}>No bikes available &#128542;</p>
-    </div>
+    else return (
+        <div>
+            <h5>Available bicycles</h5>
+            <div style={styles.box}>
+                <p style={styles.data}>No bikes available &#128542;</p>
+            </div>
+        </div>
+    )
 
 }
 
