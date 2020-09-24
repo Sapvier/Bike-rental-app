@@ -36,7 +36,7 @@ const AvailableBikesList = () => {
 
         }
         fetchData();
-    }, []);
+    }, [data]);
 
     const listItems = data.map(bike =>
         <AvailableBike bike={bike} key={bike._id}/>

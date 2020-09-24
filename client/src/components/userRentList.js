@@ -36,7 +36,7 @@ const UserRentList = () => {
             else setRented([])
         }
         fetchData();
-    }, []);
+    }, [rented]);
 
     const listItems = rented.map(bike =>
         <UserBike bike={bike} key={bike._id}/>

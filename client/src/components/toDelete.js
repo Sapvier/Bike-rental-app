@@ -8,7 +8,6 @@ const ToDelete = ({bike}) => {
         try {
             const res = await axios.delete(`http://localhost:5000/${data._id}`)
             console.log(res.data)
-            window.location.reload(false);
         } catch (e) {
             throw new Error(e.message)
         }
